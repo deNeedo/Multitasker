@@ -1,2 +1,2 @@
-# multitasker
-multi purposes Discord Bot
+# Multitasker
+Multi purposes Discord Bot
