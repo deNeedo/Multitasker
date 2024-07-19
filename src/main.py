@@ -2,7 +2,6 @@ from discord import Intents, Message, Status, DMChannel
 from discord.ext.commands import Bot, Context
 from logger import Logger
 from config import Config
-from random import randint
 
 class Multitasker(Bot):
     def __init__(self, command_prefix, intents):
