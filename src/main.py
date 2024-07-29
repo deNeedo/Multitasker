@@ -99,7 +99,7 @@ class Multitasker(Bot):
                             counter = open(f'./data/counters/{file}', 'w')
                             for line in lines:
                                 if temp[3] in line:
-                                    line = f'{line.split(' ')[0]} {(int) (line.split(' ')[1]) + 1}\n'
+                                    line = f"{line.split(' ')[0]} {int(line.split(' ')[1]) + 1}\n"
                                     flag = True
                                 counter.write(line)
                             if flag == False:
