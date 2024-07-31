@@ -108,6 +108,24 @@ class Multitasker(Bot):
                             await ctx.send('Counter incremented')
                             return
                     await ctx.send('Such counter does not exist')
+                else:
+                    for file in listdir(path):
+                        if file == temp[1]:
+                            counter = open(f'./data/counters/{file}', 'r')
+                            lines = counter.readlines()
+                            counter.close()
+                            value = 0
+                            flag = False
+                            for line in lines:
+                                if temp[2] in line:
+                                    flag = True
+                                    value = int(line.split(' ')[1])
+                                    break
+                            if flag == False:
+                                await ctx.send(f'Counter {temp[1]} for user {temp[2]}: 0')
+                            else:
+                                await ctx.send(f'Counter {temp[1]} for user {temp[2]}: {value}')
+                            return
             except:
                 await ctx.send('Incorrect syntax!')
             # embed = Embed(title="Select an Option", description="Please choose an option from the dropdown menu below and click Submit.")
