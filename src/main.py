@@ -1,6 +1,7 @@
-from discord import ButtonStyle, Intents, Interaction, Message, SelectOption, Status, DMChannel, Embed
+from discord import ButtonStyle, Intents, Interaction, Message, Member, SelectOption, Status, DMChannel, Embed
 from discord.ext.commands import Bot, Context
 from discord.ui import View, Select, Button
+from discord.utils import get as getFromDiscordUtils
 from logger import Logger
 from config import Config
 from os import listdir, remove
@@ -163,6 +164,10 @@ class Multitasker(Bot):
             if message.author == bot.user: return
             else:
                 await self.process_commands(message)
+    # Handler for every new server member
+    async def on_member_join(self, member: Member):
+        role = getFromDiscordUtils(member.guild.roles, name="BELIEVER")
+        await member.add_roles(role)
     # Runs every time bot is being initialized
     async def on_ready(self):
         await self.change_presence(status = Status.online)
